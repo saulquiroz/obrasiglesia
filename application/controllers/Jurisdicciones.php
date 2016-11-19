@@ -14,7 +14,6 @@ public function __construct()
 
 }
 function index(){
-  //$this->load->view('buscar/buscar_obispo');
   $ci = $this->session->userdata('ci');
   $data['usuario'] = $this->usuario_model->datoUsuario($ci);
   $this->load->view('inicio/header1');
@@ -26,15 +25,11 @@ function obispo()
   $this->form_validation->set_message('required', 'El campo no puede ir vacío!');
       if($this->form_validation->run() == false){
         redirect('buscar');
-        # echo json_encode(array('result'=> false));
       }
       else{
           $tipo = $this->input->post('tipo');
 
           if($this->obispo_model->obispoTipo($tipo)){
-              //$sql = "UPDATE producto set categoria = categoria  WHERE cod_producto = ?";
-              //$sql = "UPDATE produtos set estoque = estoque -  ? WHERE idProdutos = ?";
-            //  $this->db->query($sql, array($quantidade, $produto));
             $data['resultadoObispoTipo'] = $this->obispo_model->obispoTipo($tipo);
             $this->load->view('buscar/buscar_obispo');
             $this->load->view('buscar/busqueda_obispos',$data);
@@ -62,9 +57,6 @@ function jurisdiccion()
           $jurisdiccion = $this->input->post('jurisdiccion');
 
           if($this->jurisdiccion_model->datoJurisdiccion($jurisdiccion)){
-              //$sql = "UPDATE producto set categoria = categoria  WHERE cod_producto = ?";
-              //$sql = "UPDATE produtos set estoque = estoque -  ? WHERE idProdutos = ?";
-            //  $this->db->query($sql, array($quantidade, $produto));
             $data['resultadoJurisdiccion'] = $this->jurisdiccion_model->datoJurisdiccion($jurisdiccion);
             $this->load->view('buscar/buscar_jurisdiccion');
             $this->load->view('buscar/busqueda_jurisdiccion',$data);
@@ -184,9 +176,6 @@ function editar()
           $tipo = $this->input->post('tipo');
 
           if($this->buscar_model->obispo($tipo) == true){
-              //$sql = "UPDATE producto set categoria = categoria  WHERE cod_producto = ?";
-              //$sql = "UPDATE produtos set estoque = estoque -  ? WHERE idProdutos = ?";
-            //  $this->db->query($sql, array($quantidade, $produto));
             $data['resultado_busqueda'] = $this->buscar_model->obispo($tipo) ;
             $this->load->view('buscar/buscar_obispo');
             $this->load->view('buscar/busqueda_obispos',$data);
@@ -292,8 +281,6 @@ function chavez(){
 function pdf(){
       $data['jurisdiccion'] = $this->jurisdiccion_model->datoJurisdiccion(17);
       $this->load->helper('mpdf');
-
-      //$this->load->view('relatorios/imprimir/imprimirOs', $data);
       $html = $this->load->view('buscar/aiquile', $data, true);
       pdf_create($html, 'joelrojas' . date('d/m/y'), TRUE);
   }

@@ -24,7 +24,6 @@ class Pag_busqueda extends CI_Controller{
       $this->form_validation->set_rules('obra','Obra','trim|xss_clean');
       if($this->form_validation->run() == false){
         redirect(base_url());
-        # echo json_encode(array('result'=> false));
       }
       else{
         if ($this->input->post('jurisdiccion')!=0) {

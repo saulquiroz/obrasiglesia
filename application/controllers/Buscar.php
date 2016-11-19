@@ -25,15 +25,11 @@ class Buscar extends CI_Controller{
     $this->form_validation->set_message('required', 'El campo no puede ir vacío!');
         if($this->form_validation->run() == false){
           redirect('buscar');
-          # echo json_encode(array('result'=> false));
         }
         else{
             $tipo = $this->input->post('tipo');
 
             if($this->obispo_model->obispoTipo($tipo)){
-                //$sql = "UPDATE producto set categoria = categoria  WHERE cod_producto = ?";
-                //$sql = "UPDATE produtos set estoque = estoque -  ? WHERE idProdutos = ?";
-              //  $this->db->query($sql, array($quantidade, $produto));
               $data['resultadoObispoTipo'] = $this->obispo_model->obispoTipo($tipo);
               $this->load->view('buscar/buscar_obispo');
               $this->load->view('buscar/busqueda_obispos',$data);
@@ -86,8 +82,7 @@ class Buscar extends CI_Controller{
       $this->form_validation->set_rules('obra','Obra','trim|xss_clean');
       if($this->form_validation->run() == false){
         redirect('buscar/obras_inicio');
-        # echo json_encode(array('result'=> false));
-      }
+     }
       else{
         if ($this->input->post('jurisdiccion')!=0) {
             $sql = "WHERE ";
@@ -183,9 +178,6 @@ class Buscar extends CI_Controller{
             $tipo = $this->input->post('tipo');
 
             if($this->buscar_model->obispo($tipo) == true){
-                //$sql = "UPDATE producto set categoria = categoria  WHERE cod_producto = ?";
-                //$sql = "UPDATE produtos set estoque = estoque -  ? WHERE idProdutos = ?";
-              //  $this->db->query($sql, array($quantidade, $produto));
               $data['resultado_busqueda'] = $this->buscar_model->obispo($tipo) ;
               $this->load->view('buscar/buscar_obispo');
               $this->load->view('buscar/busqueda_obispos',$data);

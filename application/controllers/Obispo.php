@@ -189,8 +189,6 @@ class Obispo extends CI_Controller{
         $data['obispo'] = $this->obispo_model->datoObispo1(17);
 
         $this->load->helper('mpdf');
-
-        //$this->load->view('relatorios/imprimir/imprimirOs', $data);
         $html = $this->load->view('obispo/perfil_obispo', $data, true);
         pdf_create($html, 'joelrojas' . date('d/m/y'), TRUE);
     }
