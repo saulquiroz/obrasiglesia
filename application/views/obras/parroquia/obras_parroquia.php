@@ -47,7 +47,7 @@
                             <div class="col-md-7 col-sm-7 col-xs-12 form-group has-feedback">
                               <input   type="text" name="nombre" class="form-control" placeholder="">
                               <span class="fa fa-calendar-o form-control-feedback right" aria-hidden="true"></span>
-                            </div><div class="clearfix"></div>
+                            </div><div class="clearfix"></div> 
 
                             <label class="control-label col-md-2 " for="first-name">Sigla:</label>
                             <div class="col-md-7 col-sm-7 col-xs-12 form-group has-feedback">

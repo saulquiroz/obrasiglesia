@@ -144,9 +144,17 @@
 
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Estadísticas <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-search"></i> Buscador <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url(); ?>buscar/obras_inicio">Buscar Obras</a></li>
+                      <li><a href="<?php echo base_url(); ?>buscar">Buscar Obispo</a></li>
+                      <li><a href="<?php echo base_url(); ?>buscar/jurisdiccion_inicio">Buscar Jurisdiccion</a></li>
+                    </ul>
+                    
+                  </li>
+                  <li><a><i class="fa fa-bar-chart-o"></i> Dashboards <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="<?php echo base_url(); ?>dashboard">Obras por Jurisdiccion</a></li>
                       <li><a href="<?php echo base_url(); ?>buscar">Buscar Obispo</a></li>
                       <li><a href="<?php echo base_url(); ?>buscar/jurisdiccion_inicio">Buscar Jurisdiccion</a></li>
                     </ul>

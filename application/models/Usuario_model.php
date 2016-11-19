@@ -46,27 +46,19 @@ class Usuario_model extends CI_Model{
     }
 
   }
-  /*function guardar2($cod_usuario,$nombre,$apellido,$fechanac_date,$imagen,$telefono,$email,$username,$password,$tipo){
-    $data = array(
-      'cod_usuario' => $cod_usuario,
-      'nombre' => $nombre,
-      'apellido' => $apellido,
-      'fecha_nacimiento' => $fechanac_date,
-      'foto' => $imagen,
-      'telefono' => $telefono,
-      'email' => $email,
-      'username' => $username,
-      'password' => $password,
-      'tipo' => $tipo
-    );
-    $this->db->insert('usuario',$data);
-    if ($this->db->affected_rows() > 0 ) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }*/
+
+  function getCantidad(){
+  $this->db->select('*');
+    $this->db->from('obras_datos');
+    return $this->db->get()->num_rows();
+  }
+  function cantidadObrasJurisdiccion(){
+  $query = $this->db->query("SELECT b.sede, COUNT(b.sede) AS Cantidad
+  FROM obras_datos a, sede_episcopal b
+  WHERE b.cod_sede = a.cod_jurisdiccion
+  GROUP BY b.sede;");
+    return $query->result_array();
+  }
 
   function datoUsuario($ci){
     $this->db->where('cod_usuario',$ci);
@@ -82,10 +74,6 @@ class Usuario_model extends CI_Model{
   function getUsuarios(){
     $this->db->select('*');
     $this->db->from('usuario');
-    #$this->db->join('producto','producto.cod_producto = detalle.cod_producto');
-    #$this->db->where('numero_factura',$id);
-    //$this->db->limit(1);
-    //$query = $this->db->get();
   return $query = $this->db->get()->result();
     }
 
@@ -135,15 +123,6 @@ class Usuario_model extends CI_Model{
   function datoUsuario1($id){
       $this->db->select('usuario.*');
       $this->db->from('usuario');
-      
-
-      #$this->db->join('jurisdiccion','obispos.cod_usuario= jurisdiccion.obaux1');
-      #$this->db->join('jurisdiccion','obispos.cod_usuario= jurisdiccion.obaux2');
-      #$this->db->join('jurisdiccion','obispos.cod_usuario= jurisdiccion.obaux3');
-      #$this->db->join('jurisdiccion','obispos.cod_usuario= jurisdiccion.obaux4');
-      #$this->db->join('obispos','obispos.cod_usuario= jurisdiccion.obem1');
-      #$this->db->join('obispos','obispos.cod_usuario= jurisdiccion.obem2');
-      #$this->db->join('obispos','obispos.cod_usuario= jurisdiccion.obem3');
       $this->db->where('cod_usuario',$id);
       return $query = $this->db->get()->result();
 

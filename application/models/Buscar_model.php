@@ -13,8 +13,6 @@ class Buscar_model extends CI_Model{
     $this->db->from('obispos');
     $this->db->join('usuario','usuario.cod_usuario= obispos.cod_usuario');
     $this->db->where('cod_tipoobispo',$tipo);
-  				//$this->db->limit(1);
-  				//$query = $this->db->get();
   			return $query = $this->db->get()->result();
   }
   function getById($cod_obra){
