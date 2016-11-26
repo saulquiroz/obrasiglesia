@@ -6,7 +6,7 @@ class Dashboard extends CI_Controller {
 		parent::_construct();
 		$this->load->model('usuario_model');
 		$this->load->model('dashboard_model');
-			
+
 	}
 	public function index()
 	{
@@ -19,7 +19,6 @@ class Dashboard extends CI_Controller {
 		$data['usuario'] = $this->usuario_model->datoUsuario($ci);
 		$data['total'] = $this->usuario_model->getCantidad();
 		$data['cantidadObras'] = $this->usuario_model->cantidadObrasJurisdiccion();
-		#$json_string = json_encode($cantidadObras);
     	$this->load->view('templates/header',$data);
 		$this->load->view('dashboard',$data);
 		$this->load->view('templates/footer');
