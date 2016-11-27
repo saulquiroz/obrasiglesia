@@ -73,8 +73,61 @@ class Dashboard extends CI_Controller {
 		$ci = $this->session->userdata('ci');
 		$data['usuario'] = $this->usuario_model->datoUsuario($ci);
 		$data['enero'] = $this->areas_model->enero();
+		$data['febrero'] = $this->areas_model->febrero();
+		$data['marzo'] = $this->areas_model->marzo();
+		$data['abril'] = $this->areas_model->abril();
+		$data['mayo'] = $this->areas_model->mayo();
+		$data['junio'] = $this->areas_model->junio();
+		$data['julio'] = $this->areas_model->julio();
+		$data['agosto'] = $this->areas_model->agosto();
+		$data['septiembre'] = $this->areas_model->septiembre();
+		$data['octubre'] = $this->areas_model->octubre();
+		$data['noviembre'] = $this->areas_model->noviembre();
+		$data['diciembre'] = $this->areas_model->diciembre();
 		$this->load->view('templates/header',$data);
 		$this->load->view('dashboards/areas',$data);
+		$this->load->view('templates/footer');
+		}
+	}
+
+	function montoInvertido(){
+		$this->load->model('montos_model');
+		if (!$this->session->userdata('usuario')){
+			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
+			redirect(base_url());
+			}
+ 	  	else{
+		$ci = $this->session->userdata('ci');
+		$data['usuario'] = $this->usuario_model->datoUsuario($ci);
+		$data['monto'] = $this->montos_model->montoInvertido();
+		$this->load->view('templates/header',$data);
+		$this->load->view('dashboards/montos',$data);
+		$this->load->view('templates/footer');
+		}
+	}
+	function fecha(){
+		$this->load->model('fechas_model');
+		if (!$this->session->userdata('usuario')){
+			$this->session->set_flashdata('mensaje','Debes Iniciar Sesion');
+			redirect(base_url());
+			}
+ 	  	else{
+		$ci = $this->session->userdata('ci');
+		$data['usuario'] = $this->usuario_model->datoUsuario($ci);
+		$data['enero'] = $this->fechas_model->enero();
+		$data['febrero'] = $this->fechas_model->febrero();
+		$data['marzo'] = $this->fechas_model->marzo();
+		$data['abril'] = $this->fechas_model->abril();
+		$data['mayo'] = $this->fechas_model->mayo();
+		$data['junio'] = $this->fechas_model->junio();
+		$data['julio'] = $this->fechas_model->julio();
+		$data['agosto'] = $this->fechas_model->agosto();
+		$data['septiembre'] = $this->fechas_model->septiembre();
+		$data['octubre'] = $this->fechas_model->octubre();
+		$data['noviembre'] = $this->fechas_model->noviembre();
+		$data['diciembre'] = $this->fechas_model->diciembre();
+		$this->load->view('templates/header',$data);
+		$this->load->view('dashboards/fechas',$data);
 		$this->load->view('templates/footer');
 		}
 	}
