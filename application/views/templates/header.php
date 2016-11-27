@@ -155,8 +155,11 @@
                   <li><a><i class="fa fa-bar-chart-o"></i> Dashboards <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?php echo base_url(); ?>dashboard">Obras por Jurisdiccion</a></li>
-                      <li><a href="<?php echo base_url(); ?>buscar">Buscar Obispo</a></li>
-                      <li><a href="<?php echo base_url(); ?>buscar/jurisdiccion_inicio">Buscar Jurisdiccion</a></li>
+                      <li><a href="<?php echo base_url(); ?>dashboard/areas">Porcentaje por Areas</a></li>
+                      <li><a href="<?php echo base_url(); ?>dashboard/montoInvertido">Monto Invertido</a></li>
+                      <li><a href="<?php echo base_url(); ?>dashboard/fecha">Obras por año, mes</a></li>
+                      
+                         
                     </ul>
                   </li>
                 </ul>
